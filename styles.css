@@ -1,0 +1,97 @@
+*,
+html,
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 100px;    
+    background-color: gray;
+    padding: 10px;
+    border: 1px solid black;   
+    width: 30%;
+    border-radius: 5px;
+    display: none;
+}
+
+/* .book-storage {
+    visibility: hidden;
+} */
+
+.doc-header {
+    background-color: teal;
+    float: right;
+    text-align: center;
+    color: rgb(193, 219, 221);
+    height: 100px;
+    width: 100%;
+    padding-top: 30px;
+    font-size: 30px;
+    font-style: italic;
+    box-shadow: 1px 2px 5px black;
+    font-weight: 600;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+    margin: auto;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+th {
+    border-radius: 5px;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+td:last-child {
+    font-style: normal;
+    padding-left: 20px;
+}
+
+tr {
+    font-style: italic;
+    font-weight: bold;
+    line-height: 30px;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: teal;
+    color: white;
+}
+
+tr:nth-child(odd) {
+    color: black;
+}
+
+.btn-container {
+    margin: auto;
+    margin-top: 20px;
+    width: 100px;
+}
+
+.add-book {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: teal;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #010370;
+    border-radius: 5px;
+}
