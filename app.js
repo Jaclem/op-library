@@ -1,46 +1,46 @@
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
-const bookRead = document.getElementById('book-read');
 const submitBtn = document.getElementById('submit-btn');
 const addBtn = document.getElementById('add-book');
 const addForm = document.getElementById('form-flex');
 const modal = document.getElementById('modal');
-let functionIsRunning = false;
-
+let bookRead;
 let myLibrary = [];
 
 const toggleActive = () => {
     addForm.classList.add('display-modal');
-    functionIsRunning = true;
 }
 
 const toggleInactive = () => {
     addForm.classList.remove('display-modal');
 }
 
-const isRunning = () => {
-    if (!functionIsRunning) {
-        functionIsRunning = true;
-    }
-}
-
 // Book object
 function Book(title, author, pages, read){
     this.title = title
     this.author = author
-    this.pages = pages
+    this.pages = Number(pages)
     this.read = read
 }
 
 // Prototype method via object
-Book.prototype.info = function(){
-    return `${this.title} by ${this.author} has ${this.pages} pages ${this.read}`;
+Book.prototype.info = function() {
+    return `${this.title} ${this.author} ${this.pages} ${this.read}`
 }
 
 submitBtn.addEventListener('click', (e)=> {
     e.preventDefault();
-    myLibrary = [bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value];
+
+    
+
+    if(document.getElementById('book-yes').checked){
+        bookRead = "\u2705";
+    }
+    else {
+        bookRead = "\u274C";
+    }
+
     addBookToLibrary();
 });
 
@@ -58,12 +58,19 @@ document.addEventListener('click', (e)=> {
 
 
 function addBookToLibrary() {
-    const Books = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
-    const node = document.createElement('li');
-    const textnode = document.createTextNode(Books.info());
+    const Books = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead);
+    myLibrary = [Books.title, Books.author, Books.pages, Books.read];
+    const node = document.createElement('tr');
+    let nodeHeader;
+    let textnode;
 
-    node.appendChild(textnode);
-    document.getElementById('storage').appendChild(node);
+    myLibrary.forEach(book => {
+        nodeHeader = document.createElement('td');
+        textnode = document.createTextNode(book);
+        node.appendChild(nodeHeader);
+        nodeHeader.appendChild(textnode);
+        document.getElementById('storage').appendChild(node);
+    });
 }
 
 
