@@ -25,14 +25,12 @@ function Book(title, author, pages, read){
 }
 
 // Prototype method via object
-Book.prototype.info = function() {
-    return `${this.title} ${this.author} ${this.pages} ${this.read}`
-}
+// Book.prototype.info = function() {
+//     return `${this.title} ${this.author} ${this.pages} ${this.read}`
+// }
 
 submitBtn.addEventListener('click', (e)=> {
-    e.preventDefault();
-
-    
+    e.preventDefault();   
 
     if(document.getElementById('book-yes').checked){
         bookRead = "\u2705";
@@ -59,6 +57,11 @@ document.addEventListener('click', (e)=> {
 
 function addBookToLibrary() {
     const Books = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead);
+    localStorage.setItem(bookTitle.value);
+    localStorage.setItem(bookAuthor.value);
+    localStorage.setItem(bookPages.value);
+    localStorage.setItem(bookRead);
+
     myLibrary = [Books.title, Books.author, Books.pages, Books.read];
     const node = document.createElement('tr');
     let nodeHeader;
